@@ -586,7 +586,8 @@
             if (typeof obj.K == 'undefined')
             {
                 this.cancelFramerate(obj);
-                if (typeof this.cnvs[c].fps == 'undefined') obj.clearSelf(this.ctxs[c]);
+                if (typeof this.cnvs[c].fps == 'undefined' && obj.clearSelf) 
+                    obj.clearSelf(this.ctxs[c]);
             }
             if (this.cnvs[c].groups[i].rmvObj(obj)) return true;
         }
@@ -603,9 +604,12 @@
         if (typeof c == 'undefined')
         {
             for (c = 0; c < this.cnvs.length; c++)
-            if (typeof (this.cnvs[c].groups) != 'undefined') this.cnvs[c].groups = [];
+            if (typeof (this.cnvs[c].groups) != 'undefined') 
+                this.cnvs[c].groups = [];
         }
-        else if (typeof (this.cnvs[c].groups) != 'undefined') this.cnvs[c].groups = [];
+        else if (typeof (this.cnvs[c].groups) != 'undefined') 
+            this.cnvs[c].groups = [];
+            
         return this;
     }
     AppManager.prototype.rmvFromGroup = function (tag, obj, c)

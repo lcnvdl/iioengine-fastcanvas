@@ -654,6 +654,9 @@
     {
         return clearShape(ctx, this, this.width, this.height);
     }
+    iio.Line.prototype.clearSelf=function(ctx){
+        return clearShape(ctx,this,this.endPos.x,this.endPos.y);
+    }
     iio.Circle.prototype.clearSelf = function (ctx)
     {
         return clearShape(ctx, this, this.radius * 2, this.radius * 2);
